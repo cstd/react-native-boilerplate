@@ -1,5 +1,5 @@
 
-import { REHYDRATE } from 'redux-persist/constants';
+import { REHYDRATE } from 'redux-persist';
 import { RESET_STATE } from '../actions/user';
 import { 
   SET_PRODUCTS,

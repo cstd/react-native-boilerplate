@@ -13,7 +13,6 @@
     "color": "0.11.3",
     "cross-env": "5.0.0",
     "lodash": "4.13.1",
-    "moment": "2.13.0",
     "react": "16.0.0",
     "react-native": "0.53.0",
     "react-native-communications": "2.2.1",
@@ -24,7 +23,7 @@
     "react-navigation": "1.0.0-beta.11",
     "react-redux": "5.0.7",
     "redux": "3.6.0",
-    "redux-persist": "4.0.0",
+    "redux-persist": "5.9.1",
     "redux-thunk": "2.2.0",
     "remote-redux-devtools": "0.5.0"
   },

@@ -1,5 +1,5 @@
 
-import { REHYDRATE } from 'redux-persist/constants';
+import { REHYDRATE } from 'redux-persist';
 import { 
   SET_TOKEN,
   SET_PROFILE,
