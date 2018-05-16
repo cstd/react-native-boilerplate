@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StatusBar, Image } from 'react-native';
 
-import LoadingScreen from '../Shared/LoadingScreen'
+import LoadingScreen from '../Shared/LoadingScreen';
 import FlatButton from '../Shared/FlatButton';
 import Input from '../Shared/Input';
 
@@ -23,7 +23,7 @@ const styles = {
   },
   body: {
     paddingHorizontal: 20,
-    paddingTop: 30
+    paddingTop: 30,
   },
   logo: {
     width: 139,
@@ -36,25 +36,24 @@ const styles = {
     color: '#F07041',
     alignSelf: 'center',
     fontSize: 15,
-    marginTop: 30
-  }
-}
+    marginTop: 30,
+  },
+};
 
 class AuthenticationPage extends Component {
-  
   state = {
-    username: "",
-    password: ""
+    username: '',
+    password: '',
   }
 
   componentWillMount() {
     const { resetRoute, token } = this.props;
-    console.log("Token:", token);
+    console.log('Token:', token);
     if (token) {
       resetRoute('home_page');
     }
   }
-  
+
   onLogin() {
     this.props.login(this.state.username, this.state.password);
   }
@@ -65,13 +64,13 @@ class AuthenticationPage extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Image source={logo} style={styles.logo}/>
+          <Image source={logo} style={styles.logo} />
         </View>
         <View style={styles.body}>
           <Input
             label="TÀI KHOẢN"
             value={this.state.username}
-            onChange={username => this.setState({ username })} 
+            onChange={username => this.setState({ username })}
             returnKeyType="next"
             autoCapitalize="none"
             onSubmitEditing={() => { this.refs.password._input.focus(); }}
@@ -80,20 +79,21 @@ class AuthenticationPage extends Component {
           <Input
             label="MẬT KHẨU"
             value={this.state.password}
-            onChange={password => this.setState({ password })} 
-            secureTextEntry={true}
+            onChange={password => this.setState({ password })}
+            secureTextEntry
             returnKeyType="next"
             autoCapitalize="none"
             ref="password"
           />
           <FlatButton
-            disabled={(!username || !password) || authStatus.status === "loading"} 
-            onPress={() => this.onLogin()}>
-            <Text style={{color: 'white'}}>
-              {authStatus.status === "loading" ? "ĐANG KẾT NỐI..." : "ĐĂNG NHẬP"}
+            disabled={(!username || !password) || authStatus.status === 'loading'}
+            onPress={() => this.onLogin()}
+          >
+            <Text style={{ color: 'white' }}>
+              {authStatus.status === 'loading' ? 'ĐANG KẾT NỐI...' : 'ĐĂNG NHẬP'}
             </Text>
           </FlatButton>
-          {authStatus.status === "failed" ? <Text style={styles.error}>{authStatus.error}</Text> : null}
+          {authStatus.status === 'failed' ? <Text style={styles.error}>{authStatus.error}</Text> : null}
         </View>
       </View>
     );

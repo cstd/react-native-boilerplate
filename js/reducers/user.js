@@ -1,6 +1,6 @@
 
 import { REHYDRATE } from 'redux-persist';
-import { 
+import {
   SET_TOKEN,
   SET_PROFILE,
   SET_UPDATE_STATUS,
@@ -15,7 +15,7 @@ const initialState = {
     required: false,
     source: '',
     version: '1.0.0',
-    build: 0
+    build: 0,
   },
 };
 
@@ -40,7 +40,7 @@ export default function (state = initialState, action) {
       updateStatus: action.updateStatus,
     };
   }
-  
+
   if (action.type === RESET_STATE) {
     return initialState;
   }

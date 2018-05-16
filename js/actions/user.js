@@ -49,9 +49,9 @@ export function checkUpdate() {
 export function login(username, password) {
   return async (dispatch, getState) => {
     dispatch(setAuthStatus('loading'));
-    
+
     const response = await postLogin(username, password);
-    
+
     if (response.status === 200) {
       dispatch(setToken(response.token));
       dispatch(setProfile(response.profile));
@@ -67,5 +67,5 @@ export function logout() {
   return (dispatch, getState) => {
     dispatch(resetState());
     setTimeout(() => RNExitApp.exitApp(), 500);
-  }
+  };
 }

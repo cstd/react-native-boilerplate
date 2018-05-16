@@ -7,14 +7,14 @@ import request from '../utils/request';
 
 
 export function fetchVersion() {
-  console.log("fetchVersion");
-  return request(`${API_URL}/?${Platform.OS === 'android' ? "android_version" : "ios_version"}`)
-    .then(response => {
+  console.log('fetchVersion');
+  return request(`${API_URL}/?${Platform.OS === 'android' ? 'android_version' : 'ios_version'}`)
+    .then((response) => {
       if (response.status === 200) {
-        console.log("fetchVersion data", response.data);
+        console.log('fetchVersion data', response.data);
         response = {
           ...response,
-          updateStatus: normalizeVersion(response.data)
+          updateStatus: normalizeVersion(response.data),
         };
       }
 
@@ -23,56 +23,54 @@ export function fetchVersion() {
 }
 
 export function postLogin(username, password) {
-  console.log("postLogin");
-  return request(`${API_URL}/?login`, 
-    // {
+  console.log('postLogin');
+  return request(`${API_URL}/?login`, {
     //   method: 'POST',
     //   body: JSON.stringify({
-    //     username, 
+    //     username,
     //     password,
     //   }),
     //   headers: {
     //     "content-type": "application/json",
     //   },
-    // }
-  )
-    .then(response => {
+    //
+  })
+    .then((response) => {
       if (response.status === 200) {
-        console.log("postLogin data", response.data);
+        console.log('postLogin data', response.data);
         response = {
           ...response,
           token: response.data ? response.data.token : null,
-          profile: response.data && response.data.profile ? 
-                      normalizeProfile(response.data.profile) : null
+          profile: response.data && response.data.profile ?
+            normalizeProfile(response.data.profile) : null,
         };
       }
-      
+
       if ((response.status === 200 && (!response.token || !response.profile)) ||
           (response.status === 999 && response.statusText === UNKNOWN_ERROR) ||
           response.status === 403) {
-            
-        console.log("postLogin error", response.data);
-        
+        console.log('postLogin error', response.data);
+
         response = {
           status: 888,
-          statusText: WRONG_USERNAME_PASSWORD_ERROR
-        }
+          statusText: WRONG_USERNAME_PASSWORD_ERROR,
+        };
       }
-      
+
       return response;
     });
 }
 
 export function fetchProducts(token) {
-  console.log("getProducts");
+  console.log('getProducts');
   return request(`${API_URL}/?token=${token}`)
-    .then(response => {
+    .then((response) => {
       if (response.status === 200) {
-        console.log("getProducts data", response.data);
+        console.log('getProducts data', response.data);
         response = {
           ...response,
-          products: response.data && response.data.products ? 
-                      response.data.products.map(product => normalizeProduct(product)) : []
+          products: response.data && response.data.products ?
+            response.data.products.map(product => normalizeProduct(product)) : [],
         };
       }
 

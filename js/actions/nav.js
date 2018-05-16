@@ -7,22 +7,23 @@ export function goBack() {
 
 export function navigate(route) {
   return (dispatch, getState) => {
-    const nav = getState().nav;
-    if (!(nav.routes && nav.routes.length && nav.routes[nav.routes.length-1].routeName === route.routeName)) {
+    const { nav } = getState();
+    if (!(nav.routes &&
+          nav.routes.length &&
+          nav.routes[nav.routes.length - 1].routeName === route.routeName)) {
       dispatch(NavigationActions.navigate(route));
     }
-  }
+  };
 }
 
 export function resetRoute(routeName) {
-  return (dispatch, getState) => {
-    const nav = getState().nav;
+  return (dispatch) => {
     dispatch(NavigationActions.reset({
-      index: 0, 
+      index: 0,
       key: null,
       actions: [
-        NavigationActions.navigate({routeName})
-      ]
+        NavigationActions.navigate({ routeName }),
+      ],
     }));
   };
 }

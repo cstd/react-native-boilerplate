@@ -16,15 +16,14 @@ const styles = {
   logo: {
     width: 119,
     height: 55,
-  }
-}
+  },
+};
 
 export default class LoadingScreen extends Component {
-
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.logo} source={logo}/>
+        <Image style={styles.logo} source={logo} />
       </View>
     );
   }

@@ -15,10 +15,10 @@ export function setProducts(products) {
 export function getProducts() {
   return async (dispatch, getState) => {
     dispatch(setGetProductsStatus('loading'));
-    
+
     const { token } = getState().user;
     const response = await fetchProducts(token);
-    
+
     if (response.status === 200) {
       dispatch(setProducts(response.products));
       dispatch(setGetProductsStatus('completed'));

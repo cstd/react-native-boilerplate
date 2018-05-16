@@ -1,6 +1,6 @@
 
 import { RESET_STATE } from '../actions/user';
-import { 
+import {
   SET_AUTH_STATUS,
   SET_GET_PRODUCTS_STATUS,
 } from '../actions/status';
@@ -9,12 +9,12 @@ import {
 const initialState = {
   authStatus: {
     status: 'completed',
-    content: ''
+    content: '',
   },
   getProductsStatus: {
     status: 'completed',
-    content: ''
-  }
+    content: '',
+  },
 };
 
 export default function (state = initialState, action) {
@@ -27,7 +27,7 @@ export default function (state = initialState, action) {
       },
     };
   }
-  
+
   if (action.type === SET_GET_PRODUCTS_STATUS) {
     return {
       ...state,
@@ -37,7 +37,7 @@ export default function (state = initialState, action) {
       },
     };
   }
-  
+
   if (action.type === RESET_STATE) {
     return initialState;
   }

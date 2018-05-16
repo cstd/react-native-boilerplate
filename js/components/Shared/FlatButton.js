@@ -9,36 +9,38 @@ const styles = {
     paddingHorizontal: 25,
     borderRadius: 5,
     height: 50,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   btnText: {
     fontSize: 20,
     alignSelf: 'center',
-    fontWeight: 'bold'
-  }
-}
+    fontWeight: 'bold',
+  },
+};
 
 export default class FlatButton extends Component {
-
   onPress() {
     this.props.onPress();
   }
 
   render() {
     return (
-      <TouchableOpacity 
+      <TouchableOpacity
         style={{
-          ...styles.btn, 
-          backgroundColor: this.props.backgroundColor || BRAND_COLOR, 
-          ...(this.props.disabled ? {backgroundColor: this.props.disabledBackgroundColor || "rgba(0,0,0,0.1)"} : {})
-        }} 
+          ...styles.btn,
+          backgroundColor: this.props.backgroundColor || BRAND_COLOR,
+          ...(this.props.disabled ? { backgroundColor: this.props.disabledBackgroundColor || 'rgba(0,0,0,0.1)' } : {}),
+        }}
         onPress={() => this.onPress()}
-        disabled={this.props.disabled}>
+        disabled={this.props.disabled}
+      >
         <Text style={{
           ...styles.btnText,
-          ...(this.props.disabled ? {color: this.props.disabledColor || BRAND_COLOR} : {color: this.props.color || BRAND_COLOR})
-        }}>{this.props.children}</Text>
+          ...(this.props.disabled ? { color: this.props.disabledColor || BRAND_COLOR } : { color: this.props.color || BRAND_COLOR }),
+        }}
+        >{this.props.children}
+        </Text>
       </TouchableOpacity>
-    )
+    );
   }
 }

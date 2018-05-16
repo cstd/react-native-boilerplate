@@ -9,15 +9,15 @@ import styles from './styles';
 import { navigate } from '../../actions/nav';
 
 const logo = require('../../../images/logo-white.png');
+
 const activeItemBgColor = '#f9cb66';
 
 class SideBar extends Component {
-
   getCurrentRoute() {
-    if (this.props.nav.routes && 
-        this.props.nav.routes.length && 
+    if (this.props.nav.routes &&
+        this.props.nav.routes.length &&
         this.props.nav.routes[0].routes &&
-        this.props.nav.routes[0].routes.length && 
+        this.props.nav.routes[0].routes.length &&
         this.props.nav.routes[0].routes[0].routes &&
         this.props.nav.routes[0].routes[0].routes.length) {
       return this.props.nav.routes[0].routes[0].routes[this.props.nav.routes[0].routes[0].index].key;
@@ -30,7 +30,7 @@ class SideBar extends Component {
 
     const categories = [
       {
-        name: 'HOẠT ĐỘNG'
+        name: 'HOẠT ĐỘNG',
       },
       {
         name: 'Đồng bộ dữ liệu',
@@ -42,22 +42,22 @@ class SideBar extends Component {
         route: 'home_page',
         icon: 'md-clipboard',
         badge: 9,
-        bg: '#6390ff'
+        bg: '#6390ff',
       },
       {
-        name: 'HỆ THỐNG'
+        name: 'HỆ THỐNG',
       },
       {
         name: 'Cài đặt',
         route: 'settings_page',
-        icon: 'md-settings'
+        icon: 'md-settings',
       },
       {
         name: 'Thoát',
         action: () => BackHandler.exitApp(),
-        icon: 'md-log-out'
+        icon: 'md-log-out',
       },
-    ]
+    ];
 
     return (
       <Content
@@ -76,38 +76,39 @@ class SideBar extends Component {
           <Text style={styles.drawerText}>{`${phone}`}</Text>
         </View>
 
-        <List 
+        <List
           dataArray={categories}
-          renderRow={data => 
-            (!data.route && !data.action)
+          renderRow={data =>
+            ((!data.route && !data.action)
             ?
-            <ListItem itemDivider style={styles.listItemDivider}>
-              <Text style={styles.textDivider}>{data.name}</Text>
-            </ListItem>
+              <ListItem itemDivider style={styles.listItemDivider}>
+                <Text style={styles.textDivider}>{data.name}</Text>
+              </ListItem>
             :
-            <ListItem
-             button
-             noBorder
-             onPress={data.route ? () => this.props.navigate({routeName: data.route}) : data.action}
-             style={{...styles.listItem, ...(this.getCurrentRoute() === data.route ? {backgroundColor: activeItemBgColor} : {})}}>
-              <Left>
-                <Icon active name={data.icon} style={styles.icon} />
-                <Text style={styles.text}>{data.name}</Text>
-              </Left>
-              {
+              <ListItem
+                button
+                noBorder
+                onPress={data.route ? () => this.props.navigate({ routeName: data.route }) : data.action}
+                style={{ ...styles.listItem, ...(this.getCurrentRoute() === data.route ? { backgroundColor: activeItemBgColor } : {}) }}
+              >
+                <Left>
+                  <Icon active name={data.icon} style={styles.icon} />
+                  <Text style={styles.text}>{data.name}</Text>
+                </Left>
+                {
                 data.badge
                 ?
-                <Right>
-                  <Badge
-                    style={{ height: 24, backgroundColor: data.bg }}
-                  >
-                    <Text style={styles.badgeText}>{`${data.badge}`}</Text>
-                  </Badge>
-                </Right>
+                  <Right>
+                    <Badge
+                      style={{ height: 24, backgroundColor: data.bg }}
+                    >
+                      <Text style={styles.badgeText}>{`${data.badge}`}</Text>
+                    </Badge>
+                  </Right>
                 :
                 null
               }
-            </ListItem>}
+              </ListItem>)}
         />
       </Content>
     );

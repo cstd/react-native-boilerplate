@@ -11,7 +11,7 @@ const initialState = AppNavigator.router.getStateForAction(NavigationActions.res
   ],
 }));
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   const nextState = AppNavigator.router.getStateForAction(action, state);
   return nextState || state;
-};
+}

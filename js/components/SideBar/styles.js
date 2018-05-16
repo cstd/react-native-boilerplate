@@ -9,7 +9,7 @@ export default {
     width: null,
     padding: 15,
     paddingBottom: 12,
-    backgroundColor: '#FCB71E'
+    backgroundColor: '#FCB71E',
   },
   drawerLogo: {
     backgroundColor: 'transparent',
@@ -18,7 +18,7 @@ export default {
     alignSelf: 'flex-end',
   },
   drawerText: {
-    color: "white",
+    color: 'white',
     fontWeight: 'bold',
     lineHeight: (Platform.OS === 'ios') ? 18 : 20,
     fontSize: 17,
@@ -32,31 +32,31 @@ export default {
   },
   listItemDivider: {
     backgroundColor: '#FCB71E',
-    paddingBottom: 0
+    paddingBottom: 0,
   },
   listItem: {
-    marginLeft: 0
+    marginLeft: 0,
   },
   textDivider: {
     fontSize: 16,
     color: '#444',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   icon: {
     color: '#666',
     fontSize: 26,
     width: 30,
-    marginLeft: 30
+    marginLeft: 30,
   },
   text: {
     fontWeight: (Platform.OS === 'ios') ? '500' : '400',
     fontSize: 20,
     marginLeft: 10,
-    color: '#666'
+    color: '#666',
   },
   badgeText: {
     fontSize: (Platform.OS === 'ios') ? 13 : 13,
     fontWeight: '400',
     textAlign: 'center',
   },
-}
+};
