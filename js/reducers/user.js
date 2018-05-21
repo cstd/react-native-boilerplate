@@ -46,7 +46,7 @@ export default function (state = initialState, action) {
   }
 
   if (action.type === REHYDRATE) {
-    const saved = action.payload.user || state;
+    const saved = action.payload ? action.payload.user : state;
     return {
       ...state,
       token: saved.token,

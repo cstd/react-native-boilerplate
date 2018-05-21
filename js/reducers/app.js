@@ -21,7 +21,7 @@ export default function (state = initialState, action) {
   }
 
   if (action.type === REHYDRATE) {
-    const saved = action.payload.app || state;
+    const saved = action.payload ? action.payload.app : state;
     return {
       ...state,
       // products: saved.products,
